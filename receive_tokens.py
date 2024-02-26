@@ -15,16 +15,16 @@ client = TelegramClient('session_name', api_id, api_hash)
 async def send_address_to_telegram_group(address):
     # First, send the '/buy' command to the Telegram group
     buy_command_message = "/buy"
-    await client.send_message('target_telegram_group_name', buy_command_message)
+    await client.send_message('solana_unibot', buy_command_message)
 
     # Ensure there's a slight delay to maintain order and give the receiving end a moment to process
     await asyncio.sleep(1)  # Adjust the sleep time if necessary
 
     # Then, send the address as a separate message
     address_message = address
-    await client.send_message('target_telegram_group_name', address_message)
+    await client.send_message('solana_unibot', address_message)
 
-@client.on(events.NewMessage(chats='source_chat_identifier'))
+@client.on(events.NewMessage(chats='asdfghjmngtyjh'))
 async def group_message_handler(event):
     if event.text:
         address = extract_address(event.text)
